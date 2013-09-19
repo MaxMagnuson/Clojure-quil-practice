@@ -6,5 +6,10 @@
   :title "What is happening!?"
   :setup dynamic/setup           
   :draw dynamic/draw              
-  :size [400 600])                
+  :size [600 450]
+)  
+
+(defn -main [& args]
+ example
+)              
 
