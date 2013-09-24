@@ -3,9 +3,8 @@
 
 (defn setup []
   (smooth)
-  (frame-rate 2)
+  (frame-rate 1000)
   
-  (background-image (load-image "rubber-ducks.jpg"))
   ;;(background (random 255)(random 255)(random 255))
    )
 
@@ -13,9 +12,9 @@
   (stroke (random 255)(random 255)(random 255))
   (stroke-weight (random 10))
   (fill (random 255)(random 255)(random 255))
-  (let [diam (random 100)
-        x    (random (width))
-        y    (random (height))
-        z    (random 20)]
-    (rect x y diam diam)
-    (triangle x y y x z diam)))
+  ;;(let [diam (random 100)
+  ;;      x    (random (width))
+  ;;      y    (random (height))
+  ;;      z    (random 20)]
+ (set-image (frame-count) (frame-count) (load-image "rubber-ducks.jpg")))
+  ;;(rect (* 5 (frame-count)) (* 5 (frame-count)) 20 20))

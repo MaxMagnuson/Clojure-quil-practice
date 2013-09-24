@@ -6,7 +6,7 @@
   :title "What is happening!?"
   :setup dynamic/setup           
   :draw dynamic/draw              
-  :size [600 450]
+  :size [(screen-width) (screen-height)]
 )  
 
 (defn -main [& args]
