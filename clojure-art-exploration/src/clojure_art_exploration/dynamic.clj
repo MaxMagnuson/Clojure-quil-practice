@@ -4,23 +4,49 @@
 (defn setup []
   (smooth)
   (frame-rate 5)
-(background 0 255 255) 
-(fill 255 0 0)
-(text-font (create-font "Liberation Serif Bold" 250 true))
-(text "America!" 100 600)
-   )
+  (background 0 255 255) 
+  (fill 255 0 0)
+  (text-font (create-font "Liberation Serif Bold" 250 true))
+  (text "America!" 100 600)
+)
+
+(defn drawFlames []
+(stroke-weight 5)
+(stroke 220 20 60)
+(let [flameXpos 880
+      flameYpos (- (screen-height) (* (frame-count) 20))]
+   (if (= (mod (frame-count) 2) 0)	
+   	(do (begin-shape :triangles)
+		(triangle flameXpos flameYpos (- flameXpos 20) (+ (+ flameYpos 30) (* (frame-count) 2) ) (- flameXpos 10) (+ (+ flameYpos 10) (* (frame-count) 2) ) )
+		(triangle (+ flameXpos 10) flameYpos (- flameXpos 10) (+ (+ flameYpos 10) (* (frame-count) 2) ) (- flameXpos 10) (+ (+ flameYpos 45) (* (frame-count) 2) ))
+        	(triangle (+ flameXpos 20) flameYpos (+ flameXpos 20) (+ (+ flameYpos 45) (* (frame-count) 2) ) (- flameXpos 66) (+ (+ flameYpos 80) (* (frame-count) 2) ))
+        	(triangle (+ flameXpos 60) flameYpos (+ flameXpos 60) (+ (+ flameYpos 45)(* (frame-count) 2) ) (+ flameXpos 66) (+ (+ flameYpos 80) (* (frame-count) 2) ))
+		(triangle (+ flameXpos 70) flameYpos (+ flameXpos 80) (+ (+ flameYpos 10) (* (frame-count) 2) ) (+ flameXpos 20) (+ (+ flameYpos 90) (* (frame-count) 2) ))
+        	(triangle (+ flameXpos 80) flameYpos (+ flameXpos 100) (+ (+ flameYpos 30) (* (frame-count) 2) ) (+ flameXpos 120) (+ (+ flameYpos 30) (* (frame-count) 2) ))        
+   	(end-shape))
+   	(do (begin-shape :lines)
+		(line flameXpos flameYpos (- flameXpos 20) (+ (+ flameYpos 15) (* (frame-count) 2) ) )
+		(line (+ flameXpos 10) flameYpos (- flameXpos 10) (+ (+ flameYpos 5) (* (frame-count) 2) ) )
+        	(line (+ flameXpos 20) flameYpos (+ flameXpos 20) (+ (+ flameYpos 25) (* (frame-count) 2) ) )
+        	(line (+ flameXpos 60) flameYpos (+ flameXpos 60) (+ (+ flameYpos 25)(* (frame-count) 2) ) )
+		(line (+ flameXpos 70) flameYpos (+ flameXpos 80) (+ (+ flameYpos 5) (* (frame-count) 2) ) )
+        	(line (+ flameXpos 80) flameYpos (+ flameXpos 100) (+ (+ flameYpos 15) (* (frame-count) 2) ) )        
+   	(end-shape))
+   ))
+)
 
 (defn drawRocket []
   (frame-rate (frame-count))
-  (stroke 255)
+  (stroke 255 (* (frame-count) 7))
   (stroke-weight 10)
-  (fill 220 20 60)
+  (fill 220 20 60 (* (frame-count) 7))
   (let [widthBody 80 
 	heightBody 120
         rocketXposition 880
         rocketAscension (- (- (screen-height) heightBody) (* (frame-count) 20))] 
-  (rect rocketXposition (- (- (screen-height) heightBody) (* (frame-count) 20)) widthBody heightBody)
+  (rect rocketXposition rocketAscension widthBody heightBody)
   (triangle (- rocketXposition 20) (+ rocketAscension 1) (+ rocketXposition 40) (- rocketAscension 40) (+ rocketXposition 100) (+ rocketAscension 1)))
+  (drawFlames)
 )
 
 (defn seizure []
@@ -32,24 +58,16 @@
 )
 
 (defn draw []
-  ;;(let [diam (random 100)
-  ;;      x    (random (width))
-  ;;      y    (random (height))
-  ;;      z    (random 20)]
   (if (< (frame-count) 60)
-    (if (= (mod (frame-count) 2) 0)
-	  (drawRocket)
-  	  (do (background 0 255 255) 
+  	      (do (background 0 255 255 75) 
               (fill 255 0 0)
               (text-font (create-font "Liberation Serif Bold" 250 true))
-              (text "America!" 100 600))
-    )
+              (text "America!" 100 600)
+              (drawRocket))
+    
     (seizure)  
   )
-  ;;(if (= (mod (frame-count) 10) 0) (set-image (* 5 (frame-count)) (* 2 (frame-count)) (load-image "rubber-ducks.jpg")))
-  
-  ;;(if (= (mod (frame-count) 5) 0) (rect (* 5 (frame-count)) (* 5 (frame-count)) 20 20))
-  ;;(if (= (frame-count) 50) (System/exit 0))
+  (if (= (frame-count) 200) (System/exit 0))
 )
 
 
