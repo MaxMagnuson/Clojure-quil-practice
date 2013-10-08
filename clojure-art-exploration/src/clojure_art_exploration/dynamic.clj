@@ -34,38 +34,42 @@
 
    	(end-shape))
    )
-)	
+)
+
+(defn drawDot []
+  	(ellipse (+ (random 80) 1500) (+ (random 80) 200) 5 5)
+)
 
 (defn drawMoon []
   (fill 220 220 220)
   (stroke-weight 5)
   (stroke 0 0 0)
   (arc 1500 200 200 200 0 6.283)
-  (ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
-  (ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
-  (ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
-  (ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
-  (ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (+ (random 75) 200) 3 3)
 
-  (ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
-  (ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
-  (ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
-  (ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
-  (ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
+  ;;(ellipse (+ (random 75) 1500) (- 200 (random 75)) 3 3)
 
-  (ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
-  (ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
-  (ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
-  (ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
-  (ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (+ (random 75) 200) 3 3)
 
-  (ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
-  (ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
-  (ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
-  (ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
-  (ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
-  ;;(do (doall (take 20 (repeat (ellipse (+ (random 80) 1500) (+ (random 80) 200) 5 5))))
-  ;;(doall (take 20 (repeat (ellipse (- (random 80) 1500) (- (random 80) 200) 5 5)))))	
+  ;;(ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
+  ;;(ellipse (- 1500 (random 75)) (- 200 (random 75)) 3 3)
+  (doall (map (fn[f] (f)) (take 20 (repeat drawDot))))
+  ;;(doall (take 20 (repeat (ellipse (- (random 80) 1500) (- (random 80) 200) 5 5))))	
 )
 
 (defn drawRocket []
@@ -101,9 +105,9 @@
               (text "America!" 100 600)
               (drawRocket))
     
-    (seizure)  
+    ;;(seizure)  
   )
-  (if (= (frame-count) 100) (System/exit 0))
+  ;;(if (= (frame-count) 200) (System/exit 0))
 )
 
 
